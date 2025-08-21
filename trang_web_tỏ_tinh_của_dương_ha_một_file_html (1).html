@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💘 Tỏ tình của Dương Hà</title>
+  <style>
+    :root {
+      --bg: #fff5f7;
+      --card: #ffffff;
+      --primary: #ff4d6d;
+      --accent: #ff8fab;
+      --text: #2b2b2b;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ffdce5 0%, transparent 60%),
+        radial-gradient(800px 400px at 110% 10%, #ffe6ee 0%, transparent 50%),
+        var(--bg);
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+    }
+
+    .float-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 16px;
+      opacity: .25;
+      animation: floatUp linear forwards;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,.05));
+    }
+    @keyframes floatUp {
+      from { transform: translateY(20vh) scale(.8) rotate(0deg); opacity: .0; }
+      10% { opacity: .25; }
+      to { transform: translateY(-120vh) scale(1.4) rotate(360deg); opacity: 0; }
+    }
+
+    .card {
+      width: min(680px, 92vw);
+      background: var(--card);
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(255, 77, 109, 0.18), 0 4px 10px rgba(0,0,0,.06);
+      padding: clamp(20px, 4vw, 36px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .title {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: clamp(26px, 4.5vw, 36px);
+      line-height: 1.1;
+      margin: 4px 0 12px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: .3px;
+    }
+    .spark { animation: pop .9s ease infinite alternate; }
+    @keyframes pop { from { transform: translateY(0); } to { transform: translateY(-4px) rotate(-6deg); } }
+
+    p.lead {
+      font-size: clamp(16px, 2.8vw, 20px);
+      margin: 0 0 18px;
+    }
+
+    .question {
+      font-size: clamp(18px, 3.2vw, 22px);
+      font-weight: 700;
+      margin: 10px 0 22px;
+    }
+
+    .btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    button {
+      border: none; cursor: pointer; padding: 14px 22px; border-radius: 999px;
+      font-weight: 700; font-size: 16px; transition: transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+    }
+
+    #yesBtn { background: var(--primary); color: white; box-shadow: 0 10px 18px rgba(255, 77, 109, 0.3); }
+    #yesBtn:hover { transform: translateY(-2px) scale(1.04); }
+    #yesBtn:active { transform: translateY(0) scale(.98); }
+
+    #noBtn {
+      background: #ffe3ea; color: #ad2e47; box-shadow: 0 8px 14px rgba(173, 46, 71, .15);
+      transform-origin: center center;
+    }
+    #noBtn:hover { filter: brightness(1.02); }
+
+    .footer {
+      margin-top: 18px; font-size: 14px; opacity: .75;
+    }
+
+    .modal {
+      position: fixed; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.32);
+      opacity: 0; pointer-events: none; transition: opacity .25s ease;
+    }
+    .modal.show { opacity: 1; pointer-events: auto; }
+    .modal .box {
+      width: min(560px, 90vw); background: white; border-radius: 24px; padding: 28px; text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+    .modal h2 { color: var(--primary); margin: 6px 0 8px; font-size: clamp(26px, 4vw, 34px); }
+    .modal p { margin: 8px 0 18px; font-size: clamp(16px, 2.8vw, 18px); }
+
+    .cele { font-size: 42px; animation: wiggle 1.2s ease-in-out infinite; display: inline-block; }
+    @keyframes wiggle { 0%{transform:rotate(0)} 25%{transform:rotate(-10deg)} 50%{transform:rotate(0)} 75%{transform:rotate(10deg)} 100%{transform:rotate(0)} }
+
+    .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: #111; color:#fff; padding: 10px 14px; border-radius: 999px; font-size: 14px; opacity:0; transition: opacity .2s ease; }
+    .toast.show { opacity: .92; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="title">
+      <span class="spark">✨</span>
+      <span>Tỏ tình nè!</span>
+    </div>
+
+    <p class="lead">Gửi em,</p>
+    <p class="lead">Anh là <b>Dương Hà</b>. Suốt thời gian qua, anh nhận ra trái tim mình chỉ hướng về em. Cho anh cơ hội được ở bên và chăm sóc em nhé? 💕</p>
+
+    <div class="question">Em có đồng ý làm người yêu anh không? 🥺</div>
+
+    <div class="btns">
+      <button id="yesBtn">Đồng ý 💖</button>
+      <button id="noBtn">Từ chối 🙃</button>
+    </div>
+
+    <div class="footer">Của: <b>Dương Hà</b> • Làm với tất cả yêu thương 💘</div>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="box">
+      <div class="cele">🎉</div>
+      <h2>Yay! Em đã đồng ý! 💘</h2>
+      <p>Từ giờ, anh hứa sẽ làm em cười mỗi ngày. Cảm ơn em đã cho anh cơ hội! 🥰</p>
+      <button id="okBtn">Đi hẹn hò thôi! 🍧</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const heartChars = ["💗","💖","💘","💝","💞","💕"]; 
+    function spawnBackgroundHeart() {
+      const el = document.createElement('div');
+      el.className = 'float-heart';
+      el.textContent = heartChars[Math.floor(Math.random()*heartChars.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.bottom = '-5vh';
+      const dur = 6 + Math.random()*8;
+      el.style.animationDuration = dur + 's';
+      el.style.fontSize = (14 + Math.random()*28) + 'px';
+      document.body.appendChild(el);
+      setTimeout(()=> el.remove(), (dur+0.2)*1000);
+    }
+    setInterval(spawnBackgroundHeart, 900);
+    for (let i=0;i<8;i++) setTimeout(spawnBackgroundHeart, i*300);
+
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn  = document.getElementById('noBtn');
+    const modal  = document.getElementById('modal');
+    const okBtn  = document.getElementById('okBtn');
+    const toast  = document.getElementById('toast');
+
+    let noScale = 1;
+    let attempts = 0;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1600);
+    }
+
+    function playfulMessage(n) {
+      const msgs = [
+        "Ừm… nghĩ lại đi mà 🥺",
+        "Hix đừng từ chối chứ…",
+        "Thêm lần nữa là anh khóc đó 😢",
+        "Ê, bấm Đồng ý đi nà!",
+        "Nút Từ chối sẽ to nữa đó…",
+        "Không thoát được đâu nha 😼",
+        "Anh đợi câu 'Đồng ý' đó 💘",
+        "Deal? Đồng ý nhé!"
+      ];
+      return msgs[n % msgs.length];
+    }
+
+    function growNoButton() {
+      attempts++;
+      noScale += 0.18;
+      noBtn.style.transform = `scale(${noScale}) rotate(${(Math.random()*6-3).toFixed(2)}deg)`;
+      noBtn.style.padding = `${Math.min(14*noScale, 38)}px ${Math.min(22*noScale, 64)}px`;
+      showToast(playfulMessage(attempts));
+
+      if (attempts % 3 === 0) {
+        noBtn.textContent = 'Thôi mà… 🙈';
+        noBtn.style.background = '#ffd2df';
+      } else {
+        noBtn.textContent = 'Từ chối 🙃';
+        noBtn.style.background = '#ffe3ea';
+      }
+
+      if (attempts === 10) {
+        noBtn.disabled = true;
+        noBtn.style.filter = 'grayscale(0.2)';
+        showToast('Nghỉ tay xíu rồi bấm Đồng ý nha 💖');
+        setTimeout(()=>{ noBtn.disabled = false; noBtn.style.filter = ''; }, 1800);
+      }
+    }
+
+    noBtn.addEventListener('mouseenter', growNoButton);
+    noBtn.addEventListener('click', (e)=> { e.preventDefault(); growNoButton(); });
+
+    yesBtn.addEventListener('click', ()=> {
+      celebrate();
+      modal.classList.add('show');
+    });
+    okBtn.addEventListener('click', ()=> modal.classList.remove('show'));
+
+    function celebrate() {
+      const N = 120;
+      for (let i=0;i<N;i++) {
+        const span = document.createElement('span');
+        span.textContent = heartChars[i % heartChars.length];
+        span.style.position = 'fixed';
+        span.style.left = (Math.random()*100) + 'vw';
+        span.style.top = (40 + Math.random()*20) + 'vh';
+        span.style.fontSize = (16 + Math.random()*22) + 'px';
+        span.style.transition = 'transform 1.2s ease-out, opacity 1.2s ease-out';
+        span.style.zIndex = 9999;
+        document.body.appendChild(span);
+        requestAnimationFrame(()=>{
+          const dx = (Math.random()*2-1) * 60;
+          const dy = - (80 + Math.random()*120);
+          span.style.transform = `translate(${dx}vw, ${dy}vh) rotate(${Math.random()*360}deg)`;
+          span.style.opacity = 0;
+        });
+        setTimeout(()=> span.remove(), 1400);
+      }
+    }
+
+    window.addEventListener('keydown', (e)=>{
+      if (e.key.toLowerCase() === 'y') yesBtn.click();
+    });
+  </script>
+</body>
+</html>
